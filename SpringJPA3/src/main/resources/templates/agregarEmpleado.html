@@ -1,0 +1,40 @@
+
+<!DOCTYPE HTML>
+<head th:replace="fragmentos/header :: head"></head>
+<body>
+	<div th:insert="/fragmentos/header :: menu"> </div>
+	<br>
+	<div class="container mt-4">
+		<br>
+		<div class="card">
+		  <div class="card-header">
+		    Agregar Empleado
+		  </div>
+		  <div class="card-body">
+		    <h5 class="card-title">Llene los datos del formulario</h5>
+		    <form th:action="@{/guardarEmpleado}" th:object="${empleado}" method="POST">
+			  <div class="form-group">
+			    <label for="exampleInput1">ID</label>
+			    <input type="text" th:field="*{id}" class="form-control" placeholder="0">
+			  </div>
+			  <div class="form-group">
+			    <label for="exampleInput1">Nombre</label>
+			    <input type="text" th:field="*{nombre}" class="form-control" placeholder="Nombre">
+			  </div>
+			  <div class="form-group">
+			    <label for="exampleInput1">Rol</label>
+			    <select th:field="*{rol}" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+			        <option value="Supervisor">Supervisor</option>
+			        <option value="Tecnico">Técnico</option>
+			        <option value="Ayudante">Ayudante</option>
+			    </select>
+			  </div>
+			  <button type="submit" class="btn btn-primary">Guardar</button>
+			  <a href="/listarEmpleados" class="btn btn-primary active" role="button" aria-pressed="true">Cancelar</a>
+			</form>
+		  </div>
+		</div>
+	</div>
+</body>
+</html>
+

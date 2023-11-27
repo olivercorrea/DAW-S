@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <title>Spring JPA</title>
+    <meta charset="UTF-8">
+   <link th:rel="stylesheet" th:href="@{assets/bootstrap-select-1.13.9/dist/css/bootstrap-select.css}"/>
+    <link th:rel="stylesheet" th:href="@{webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+<body>
+<div th:fragment="menu">
+	<div class="container">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+		  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+		    <ul class="navbar-nav">
+		      <li class="nav-item active">
+		        <a class="btn btn-secondary btn-lg" href="/listarEmpleados">
+		        Tabla Empleados<span class="sr-only">(current)</span></a>
+		      </li>
+		      <li class="nav-item active">
+		        <a class="btn btn-info btn-lg" href="/listarTareas">Tabla Tareas<span class="sr-only">(current)</span></a>
+		      </li>
+		      <li class="nav-item active">
+		        <a class="btn btn-warning btn-lg" href="#">Asignar Tareas<span class="sr-only">(current)</span></a>
+		      </li>
+		    </ul>
+		    <form th:action="@{/buscar}" method="get" class="form-inline my-2 my-lg-0">
+			    <input class="form-control mr-sm-2" type="search" placeholder="Buscar empleado" aria-label="Buscar" name="nombre">
+			    <input class="form-control mr-sm-2" type="search" placeholder="Buscar tarea" aria-label="Buscar" name="descripcion">
+			    <button class="btn btn-success my-2 my-sm-0" type="submit">Buscar</button>
+			</form>
+		  </div>
+		</nav>
+	</div>
+</div>	
+</body>
+</html>
+

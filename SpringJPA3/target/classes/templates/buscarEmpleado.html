@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<head th:replace="fragmentos/header :: head"></head>
+<body>
+	<div th:insert="/fragmentos/header :: menu"> </div>
+	<br>
+	<div class="container mt-4">
+		<a th:href="@{/agregarEmpleado}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Agregar</a>
+		<br>
+		<span th:if="${empleados.size() != 0}">
+			<table class="table">
+			  <thead>
+			    <tr>
+			      <th scope="col">ID</th>
+			      <th scope="col">NOMBRES</th>
+			      <th scope="col">ROL</th>
+			      <th scope="col">ACCIONES</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <tr th:each="empleado : ${empleados}">
+			      <th th:text="${empleado.id}" scope="row"></th>
+			      <td th:text="${empleado.nombre}"></td>
+			      <td th:text="${empleado.rol}"></td>
+			      <td>
+			      	<a th:href="@{/editarEmpleado/}+${empleado.id}" class="btn btn-success">Editar</a>
+			      	<a th:onclick="eliminar([[${empleado.id}]])"
+			      	 class="btn btn-danger">Eliminar</a>
+			      </td>
+			    </tr>
+			  </tbody>
+			</table>
+		</span>
+		<span th:unless="${empleados.size() != 0}">
+			<div class="alert alert-danger" role="alert">
+				No se encontró ninguna coincidencia
+			</div>
+		</span>
+	</div>
+	<script src="funciones.js"></script>
+</body>
+</html>

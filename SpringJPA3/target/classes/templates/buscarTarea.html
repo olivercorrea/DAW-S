@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<head th:replace="fragmentos/header :: head"></head>
+<body>
+	<div th:insert="/fragmentos/header :: menu"> </div>
+	<br>
+	<div class="container mt-4">
+		<a th:href="@{/agregarTarea}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Agregar</a>
+		<br>
+		<span th:if="${tareas.size() != 0}">
+			<table class="table">
+			  <thead>
+			    <tr>
+			      <th scope="col">ID</th>
+			      <th scope="col">DESCRIPCION</th>
+			      <th scope="col">FECHA</th>
+			      <th scope="col">REALIZADO</th>
+			      <th scope="col">ACCIONES</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <tr th:each="tarea : ${tareas}">
+			      <th th:text="${tarea.id}" scope="row"></th>
+			      <td th:text="${tarea.descripcion}"></td>
+			      <td th:text="${tarea.fecha}"></td>
+			      <td th:text="${tarea.realizado}"></td>
+			      <td>
+			      	<a th:href="@{/editarTarea/}+${tarea.id}" class="btn btn-success">Editar</a>
+			      	<a th:onclick="eliminar([[${tarea.id}]])"
+			      	 class="btn btn-danger">Eliminar</a>
+			      </td>
+			    </tr>
+			  </tbody>
+			</table>
+		</span>
+		<span th:unless="${tareas.size() != 0}">
+			<div class="alert alert-danger" role="alert">
+				No se encontró ninguna coincidencia
+			</div>
+		</span>
+	</div>
+	<script src="funcionestarea.js"></script>
+</body>
+</html>
